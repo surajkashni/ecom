@@ -1,35 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect,lazy,Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Home from "./pages/Home";
-import Header from "./components/nav/Header";
-import RegisterComplete from "./pages/auth/RegisterComplete";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import History from "./pages/user/History";
-import UserRoute from "./components/routes/UserRoute";
-import AdminRoute from "./components/routes/AdminRoute";
-import Password from "./pages/user/Password";
-import Wishlist from "./pages/user/Wishlist";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import CategoryCreate from "./pages/admin/category/CategoryCreate";
-import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
-import SubCreate from "./pages/admin/sub/SubCreate";
-import SubUpdate from "./pages/admin/sub/SubUpdate";
-import ProductCreate from "./pages/admin/product/ProductCreate";
-
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
-import { currentUser } from "./functions/auth";
-import AllProduct from "./pages/admin/product/AllProduct";
-import ProductUpdate from "./pages/admin/product/ProductUpdate";
-import Product from "./components/home/Product";
-import CategoryHome from "./pages/category/CategoryHome";
-import SubHome from './pages/sub/SubHome';
-import Shop from "./pages/Shop";
+import { currentUser } from "./functions/auth"
+import {LoadingOutlined} from "@ant-design/icons";
+
+const Login=lazy(()=>import( "./pages/auth/Login"));
+const Register=lazy(()=>import( "./pages/auth/Register"));
+const Home=lazy(()=>import( "./pages/Home"));
+const Header=lazy(()=>import( "./components/nav/Header"));
+const RegisterComplete=lazy(()=>import( "./pages/auth/RegisterComplete"));
+const ForgotPassword=lazy(()=>import( "./pages/auth/ForgotPassword"));
+const History=lazy(()=>import( "./pages/user/History"));
+const UserRoute=lazy(()=>import( "./components/routes/UserRoute"));
+const AdminRoute=lazy(()=>import( "./components/routes/AdminRoute"));
+const Password =lazy(()=>import("./pages/user/Password"));
+const Wishlist=lazy(()=>import( "./pages/user/Wishlist"));
+const AdminDashboard=lazy(()=>import( "./pages/admin/AdminDashboard"));
+const CategoryCreate=lazy(()=>import( "./pages/admin/category/CategoryCreate"));
+const CategoryUpdate=lazy(()=>import( "./pages/admin/category/CategoryUpdate"));
+const SubCreate =lazy(()=>import("./pages/admin/sub/SubCreate"));
+const SubUpdate=lazy(()=>import( "./pages/admin/sub/SubUpdate"));
+const ProductCreate=lazy(()=>import( "./pages/admin/product/ProductCreate"));
+
+
+const AllProduct =lazy(()=>import("./pages/admin/product/AllProduct"));
+const ProductUpdate=lazy(()=>import( "./pages/admin/product/ProductUpdate"));
+const Product =lazy(()=>import("./components/home/Product"));
+const CategoryHome=lazy(()=>import( "./pages/category/CategoryHome"));
+const SubHome =lazy(()=>import('./pages/sub/SubHome'));
+const Shop =lazy(()=>import("./pages/Shop"));
+const Cart =lazy(()=>import('./pages/Cart'));
+const SideDrawer =lazy(()=>import("./components/drawer/SideDrawer"));
+const Checkout =lazy(()=>import("./pages/Checkout"));
+const CreateCouponPage=lazy(()=>import( "./pages/admin/coupon/CreateCoupon.js"));
+const PaymentCheckout =lazy(()=>import("./components/PaymentCheckout"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -62,9 +69,14 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Suspense fallback={
+      <div className="col text-center p-5" style={{justifyContent:"center"}}>
+      <h3 className="text-center m-10"> __Sh<LoadingOutlined/>pping</h3> 
+      </div>
+    }>
       <Header />
       <ToastContainer />
+      <SideDrawer/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
@@ -90,9 +102,13 @@ const App = () => {
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
         <UserRoute exact path="/shop" component={Shop} />
+        <Route exact path="/cart" component={Cart} />
+        <UserRoute exact path="/checkout" component={Checkout} />
+        <AdminRoute exact path="/admin/coupon" component={CreateCouponPage} />
+        <UserRoute exact path="/payment" component={PaymentCheckout} />
 
       </Switch>
-    </>
+    </Suspense>
   );
 };
 

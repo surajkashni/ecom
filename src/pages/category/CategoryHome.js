@@ -15,9 +15,11 @@ const CategoryHome=({match})=>{
       
         setLoading(true);
         getCategory(slug).then((c)=>{
-            console.log(JSON.stringify(c.data,null,4));
+            console.log("pc",JSON.stringify(c.data,null,4));
             setCategory(c.data.category);
-            setProducts(c.data.product);
+            console.log("c",category);
+            setProducts(c.data.products);
+            console.log('p',products)
             setLoading(false);
         });
         
@@ -33,13 +35,13 @@ const CategoryHome=({match})=>{
                        </h4>
                    ):(
                     <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
-                    {products.length} Products in "{category.name}" category
+                    {products&&products.length} Products in "{category.name}" category
                 </h4>  
                    )}
                </div>
            </div>
            <div className="row">
-               {products.map((p)=>(
+               {products&&products.map((p)=>(
                    <div className="col-md-4  " key={p._id}>
                   <ProductCard product={p}/>
                    </div>

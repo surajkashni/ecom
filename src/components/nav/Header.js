@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Menu } from "antd";
+import { Badge, Menu } from "antd";
 import {
   AppstoreOutlined,
   SettingOutlined,
   UserOutlined,
   UserAddOutlined,
   LogoutOutlined,
-  ShoppingOutlined
+  ShoppingOutlined,
+  ShoppingCartOutlined,
+  HeartOutlined
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
@@ -20,7 +22,7 @@ const Header = () => {
   const [current, setCurrent] = useState("home");
 
   let dispatch = useDispatch();
-  let { user } = useSelector((state) => ({ ...state }));
+  let { user ,cart} = useSelector((state) => ({ ...state }));
 
   let history = useHistory();
 
@@ -39,15 +41,26 @@ const Header = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" style={{backgroundColor:"#0384fc"}}>
+    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" >
       <Item key="home" icon={<AppstoreOutlined />}>
-        <Link to="/" style={{ textDecoration: 'none',color:"#ffff" }}>Home</Link>
+        <Link to="/" >Home</Link>
       </Item>
       
      
       <Item key="shop" icon={<ShoppingOutlined />}  >
-          <Link to="/shop" style={{ textDecoration: 'none',color:"#ffff" }}>Shop</Link>
+          <Link to="/shop" >Shop</Link>
       </Item>
+
+      <Item key="shop" icon={<ShoppingCartOutlined />}  >
+          <Link to="/cart" >
+            <Badge count={cart.length} offset={[9,0]}>Cart</Badge>          
+          </Link>
+      </Item>
+      {user && user.role=="subscriber" && (
+        <Item key="wishlist" icon={<HeartOutlined />}  >
+          <Link to="/user/wishlist">Wishlist</Link>
+        </Item>
+      )}
      
 
       {!user && (
@@ -66,7 +79,7 @@ const Header = () => {
         <SubMenu
           icon={<SettingOutlined />}
           title={user.email && user.email.split("@")[0]}
-          className="float-right" style={{ textDecoration: 'none',color:"#ffff" }}
+          className="float-right" style={{ textDecoration: 'none' }}
         >
           {user && user.role === "subscriber" && (
             <Item>
