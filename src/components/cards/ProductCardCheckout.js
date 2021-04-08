@@ -102,7 +102,7 @@ const ProductCardInCheckout = ({ p }) => {
           </div>
         </td>
         <td>{p.title}</td>
-        <td>${p.price}</td>
+        <td>Rs.{p.price}</td>
         <td>{p.brand}</td>
         <td>
           <select

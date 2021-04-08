@@ -210,7 +210,7 @@ const Checkout = ({ history }) => {
         <hr />
         {showProductSummary()}
         <hr />
-        <p>Cart Total: {total}</p>
+        <p>Cart Total:Rs. {total}</p>
 
         {totalAfterDiscount > 0 && (
           <p className="bg-success p-2">

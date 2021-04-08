@@ -79,12 +79,12 @@ return(
                      {description}
                  </TabPane>
                  <TabPane tab="More info" key="2">
-                    Call us on 889790900 for any query
+                   
                  </TabPane>
              </Tabs>
              </div>
             <div className="col-md-5">
-                <h1 className=" p-3 " style={{color:"whitesmoke",backgroundColor:"#0384fc"}}>{title}</h1>
+                <h1 className=" p-3 " style={{color:"gray"}}>{title}</h1>
                 {product && product.ratings && product.ratings.length>0?(showAverage(product)):(<div className="text-center">No Rating yet</div>)}
                 
             <Card 

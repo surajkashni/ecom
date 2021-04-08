@@ -8,7 +8,7 @@ return(
     <ul className="list-group">
         <li className="list-group-item">
         Price{' '}<span className="label label-default label-pill pull-xs-right">
-            ${price}
+            Rs.{price}
         </span>
         </li>
         {category&&<li className="list-group-item">
