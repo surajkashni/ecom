@@ -8,14 +8,14 @@ import { getCategories, getCategorySubs } from "../../../functions/category";
 import FileUpload from "../../../components/forms/FileUpload";
 import {LoadingOutlined} from "@ant-design/icons";
 const initialState = {
-  title: "Macbook Pro",
-  description: "This is the best Apple product",
-  price: "45000",
+  title: "",
+  description: "",
+  price: "",
   categories: [],
   category: "",
   subs: [],
   shipping: "Yes",
-  quantity: "50",
+  quantity: "",
   images: [
     // {
     //   public_id: "jwrzeubemmypod99e8lz",
@@ -33,8 +33,8 @@ const initialState = {
     //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480913/ho6wnp7sugyemnmtoogf.jpg",
     // },
   ],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+  colors: '',
+  brands: '',
   color: "White",
   brand: "Apple",
 };

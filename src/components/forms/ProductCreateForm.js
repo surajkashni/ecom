@@ -90,26 +90,24 @@ const ProductCreateForm = ({
 
       <div className="form-group">
         <label>Color</label>
-        <select name="color" className="form-control" onChange={handleChange}>
-          <option>Please select</option>
-          {colors.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
+        <input
+          type="string"
+          name="color"
+          className="form-control"
+          value={color}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="form-group">
         <label>Brand</label>
-        <select name="brand" className="form-control" onChange={handleChange}>
-          <option>Please select</option>
-          {brands.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
-        </select>
+        <input
+          type="string"
+          name="brand"
+          className="form-control"
+          value={brand}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="form-group">
