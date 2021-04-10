@@ -2,3 +2,26 @@
     height: 460px;
     object-fit: cover;
 }
+
+.st{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    
+    border-radius: 20px;
+    border-bottom:honeydew;
+    
+    border: 1px solid whitesmoke;
+    width:100%;
+}
+
+.si{
+    border-bottom-style:hidden ;
+    border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+   width: 100%;
+    margin-left: 10px;
+  
+}

@@ -12,6 +12,7 @@ import {
   DollarOutlined,
   DownSquareOutlined,
   StarOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 import Star from "../components/forms/Star";
 
@@ -19,9 +20,9 @@ const { SubMenu, ItemGroup } = Menu;
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [price, setPrice] = useState([0, 0]);
-  const [ok, setOk] = useState(false);
+  const [ok, setOk] = useState(true);
   const [categories, setCategories] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
   const [star, setStar] = useState("");
@@ -163,7 +164,7 @@ const Shop = () => {
       <div
         key={s._id}
         onClick={() => handleSub(s)}
-        className="p-1 m-1 badge badge-secondary"
+        className="p-1 m-1 btn btn-primary"
         style={{ cursor: "pointer" }}
       >
         {s.name}
@@ -254,9 +255,9 @@ const Shop = () => {
 
         <div className="col-md-9 pt-2">
           {loading ? (
-            <h4 className="text-danger">Loading...</h4>
+            <h4 className="text-danger text-center"><LoadingOutlined/></h4>
           ) : (
-            <h4 className="text-danger">Products</h4>
+            <h4 className="text-danger text-center">Products</h4>
           )}
 
           {products.length < 1 && <p>No products found</p>}
