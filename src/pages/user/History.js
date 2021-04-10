@@ -25,15 +25,17 @@ const loadUserOrders=()=>{
 
 const showOrderTable=(order)=>{
   return(
-    <table className="table table-bordered bg-white">
+    <div >
+       <table className="table table-bordered   bg-white">
       <thead className="thead-light">
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Price</th>
           <th scope="col">Brand</th>
-          <th scope="col">Color</th>
           <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
+          <th scope="col">Color</th>
+         
+        
          
           
 
@@ -46,15 +48,17 @@ const showOrderTable=(order)=>{
             <td><b>{p.product.title}</b></td>
             <td>{p.product.price}</td>
             <td>{p.product.brand}</td>
-            <td>{p.color}</td>
             <td>{p.count}</td>
-            <td>{p.product.shipping==='yes'?<CheckCircleOutlined style={{color:"green"}}/>:<CloseCircleOutlined style={{color:"red"}}/>}</td>
+            <td>{p.color}</td>
+           
 
           </tr>
         ))}
       </tbody>
 
     </table>
+    </div>
+   
   );
 
   
@@ -64,7 +68,7 @@ const showOrderTable=(order)=>{
 const showEachOrder=()=>{
   return(
     orders.reverse().map((o,i)=>(
-      <div key={i} className="m-5 p-3 card bg-light">
+      <div key={i} className="m-5 p-3 card ">
         <div className="row m-1" style={{justifyContent:"space-between"}}>
         <button className="btn col-md-4   btn-raised mb-2 bg-white">Amount Rs.{o.paymentIntent.amount} </button> 
       <button className="btn col-md-4   btn-raised mb-2 bg-white"> Status:{o.paymentIntent.status} </button> 

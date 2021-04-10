@@ -108,19 +108,19 @@ const Checkout = ({ history }) => {
         </FormGroup> */}
         <FormGroup row>
         <Label sm={2}>Mobile :</Label>
-        <Col sm={10}><Input type="text" onChange={(e)=>setMobile(e.target.value)} value={mobile}  name="mobile" /></Col>        
+        <Col sm={10}><Input type="text"className="st text-center" onChange={(e)=>setMobile(e.target.value)} value={mobile}  name="mobile" /></Col>        
         </FormGroup >
         <FormGroup row>
         <Label sm={2}>Address :</Label>
-        <Col sm={10}><Input type="text" name="address" onChange={(e)=>setAddress(e.target.value)} value={address} /></Col>        
+        <Col sm={10}><Input type="text" className="st text-center" name="address" onChange={(e)=>setAddress(e.target.value)} value={address} /></Col>        
         </FormGroup>
         <FormGroup row>
         <Label sm={2}>Pin :</Label>
-        <Col sm={10}><Input type="text" name="pin" onChange={(e)=>setPin(e.target.value)} value={pin}  /></Col>        
+        <Col sm={10}><Input type="text" className="st text-center" name="pin" onChange={(e)=>setPin(e.target.value)} value={pin}  /></Col>        
         </FormGroup>
        
         
-        <Button >Submit</Button>
+        <button style={{alignSelf:"center"}} className="btn btn-primary" >Submit</button>
         
        
       </Form>
@@ -130,7 +130,7 @@ const Checkout = ({ history }) => {
 
   const showProductSummary = () =>
     products.map((p, i) => (
-      <div key={i}>
+      <div key={i} >
         <p>
           {p.product.title} ({p.color}) x {p.count} ={" "}
           {p.product.price * p.count}
@@ -139,7 +139,7 @@ const Checkout = ({ history }) => {
     ));
 
   const showApplyCoupon = () => (
-    <>
+    <div className="m-1">
       <input
         onChange={(e) => {
           setCoupon(e.target.value);
@@ -147,12 +147,12 @@ const Checkout = ({ history }) => {
         }}
         value={coupon}
         type="text"
-        className="form-control"
+        className="form-control text-center st "
       />
-      <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2">
+      <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2 ml-2">
         Apply
       </button>
-    </>
+    </div>
   );
 
   const createCashOrder =async () => {
@@ -190,21 +190,21 @@ const Checkout = ({ history }) => {
 
   return (
     <div className="row">
-      <div className="col-md-6">
-        <h4>Delivery Address</h4>
+      <div className="col-md-5 mt-2 ">
+        <h4 className="ml-4">Delivery Address</h4>
         <br />
-        <br />
+       
         {showAddress()}
-        <hr />
-        <h4>Got Coupon?</h4>
+        <br/>
+        <h4 className="ml-4">Got Coupon?</h4>
         <br />
         {showApplyCoupon()}
         <br />
         {discountError && <p className="bg-danger p-2">{discountError}</p>}
       </div>
 
-      <div className="col-md-6">
-        <h4>Order Summary</h4>
+      <div className="col-md-6 m-2">
+        <h4 className="ml-5">Order Summary</h4>
         <hr />
         <p>Products {products.length}</p>
         <hr />

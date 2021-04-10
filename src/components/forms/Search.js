@@ -33,7 +33,7 @@ const Search=()=>{
             onChange={handleChange}
             type="search"
             value={text}
-            className="form-control si"
+            className="form-control ml-4  "
             
             placeholder="Search"/>
 

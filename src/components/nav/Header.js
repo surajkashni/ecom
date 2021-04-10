@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="m-0">
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="bg-light" >
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/" >Home</Link>
